@@ -59,7 +59,7 @@ class DirbruteComp:
         return url + path
 
     def init_rules(self):
-        self.all_rules = load_pocs("D:/PycharmProjects/WebAliveScan/pocs")
+        self.all_rules = load_pocs("C:\\Users\\itmain\\PycharmProjects\\WebAliveScan\\pocs")
 
     def compare_rule(self, rule, response_status, response_html, response_content_type):
         rule_status = [200, 206, rule.get('status')]
@@ -77,7 +77,9 @@ class DirbruteComp:
         user_agent = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
         headers = {'User-Agent': user_agent, 'Connection': 'Keep-Alive', 'Range': 'bytes=0-102400'}
         for sub_url in rule['scan_rule']['path']:
+            print(sub_url)
             url = self.format_url(sub_url)
+
             try:
                 r = requests.get(url, headers=headers, verify=False, timeout=3)
             except Exception as e:
@@ -86,15 +88,15 @@ class DirbruteComp:
             response_status = r.status_code
             response_html = r.text
             response_content_type = r.headers['Content-Type']
-            for white_rule in rules.white_rules:
-                if self.compare_rule(white_rule, response_status, response_html, response_content_type):
-                    self.output.statusReport(url, response_status, size)
-            if not self.compare_rule(rule, response_status, response_html, response_content_type):
-                return
+            # for white_rule in rules.white_rules:
+            #     if self.compare_rule(white_rule, response_status, response_html, response_content_type):
+            #         self.output.statusReport(url, response_status, size)
+            # if not self.compare_rule(rule, response_status, response_html, response_content_type):
+            #     return
             url_info = {'url': url, 'status': response_status, 'size': size.strip(),'component':rule.get("component", "")}
             self.brute_result_list.append(url_info)
             self.output.statusReport(url_info)
-            return [url, rule]
+            # return [url, rule]
 
     def run(self):
         self.init_rules()
