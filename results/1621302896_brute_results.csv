@@ -1,0 +1,3 @@
+url,status,size,component
+"http://52.35.245.187/actuator/info","200","2B","spring eureka"
+"http://52.35.245.187/actuator/health","200","49B",""

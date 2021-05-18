@@ -1,0 +1,9 @@
+name: backups_file
+scan_rule:
+  method: GET
+  headers:
+    Connection: Keep-Alive
+    Range: bytes=0-102400
+  path:
+    - /.svn/wc.db
+check_expression: (status in [200,206]) and (size > 10240) and ('application/' in content_type)

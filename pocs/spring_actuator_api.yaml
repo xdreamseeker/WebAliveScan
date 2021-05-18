@@ -1,0 +1,16 @@
+name: spring_actuator_api
+scan_rule:
+  path:
+    - /env
+    - /gateway/actuator/
+    - /trace
+    - /httptrace
+    - /mappings
+    - /actuator/
+    - /actuator/httptrace
+    - /actuator/trace
+    - /actuator/env
+    - /actuator/mappings
+    - /actuator/env/spring.jmx.enabled
+    - /env/spring.jmx.enabled
+check_expression: ('"server.port"' in text) or ('{"traces":[{"timestamp":' in text) or ('{"_links":{"self":' in text) or (':{"mappings":{"' in text)

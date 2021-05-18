@@ -1,0 +1,8 @@
+name: thinkphp-info
+scan_rule:
+  method: GET
+  path:
+    - /Application/Runtime/
+    - /runtime/log/
+    - /Runtime/
+check_expression: ('<title>Index of' in text)

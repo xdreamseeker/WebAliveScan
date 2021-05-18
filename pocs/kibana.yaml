@@ -1,0 +1,7 @@
+name: kibana
+scan_rule:
+  method: GET
+  path:
+    - /app/kibana
+    - /kibana
+check_expression: ('kibanaWelcome' in text)

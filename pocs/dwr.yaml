@@ -1,0 +1,5 @@
+name: DWR
+scan_rule:
+  path:
+    - /dwr/index.html
+check_expression: ('<title>DWR' in text)

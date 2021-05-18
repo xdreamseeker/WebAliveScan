@@ -1,0 +1,7 @@
+name: hystrix
+scan_rule:
+  method: GET
+  path:
+    - /hystrix.stream
+    - /hystrix
+check_expression: ('Dashboard' in text)

@@ -1,0 +1,8 @@
+name: report_server
+scan_rule:
+  path:
+    - /ReportServer
+    - /report/ReportServer
+    - /seeyonreport/ReportServer
+    - /WebReport/ReportServer
+check_expression: ('FineReport,Web Reporting Tool' in text)

@@ -1,0 +1,6 @@
+name: nacos
+scan_rule:
+  method: GET
+  path:
+    - /nacos
+check_expression: ('console-fe/public/img/favicon.ico' in text)

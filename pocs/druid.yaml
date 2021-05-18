@@ -1,0 +1,6 @@
+name: druid
+scan_rule:
+  path:
+    - /druid/login.html
+    - /webpage/system/druid/login.html
+check_expression: ('Druid Stat Index' in text) or ('druid monitor' in text)

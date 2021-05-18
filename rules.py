@@ -48,7 +48,7 @@ common_rules = {
         {'path': '/configprops', 'status': 200, 'type': 'application'},
         {'path': '/actuator/env', 'status': 200, 'type': 'application'},
         {'path': '/actuator/trace', 'status': 200, 'type': 'application'},
-        {'path': '/actuator/info', 'status': 200, 'type': 'application'},
+        {'path': '/actuator/info', 'status': 200, 'type': 'application','component':'spring eureka'},
         {'path': '/actuator/metrics', 'status': 200, 'type': 'application'},
         {'path': '/actuator/mappings', 'status': 200, 'type': 'application'},
         {'path': '/actuator/monitor', 'status': 200, 'type': 'application'},

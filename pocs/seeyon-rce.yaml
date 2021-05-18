@@ -1,0 +1,6 @@
+name: seeyon-RCE
+scan_rule:
+  method: GET
+  path:
+    - /seeyon/htmlofficeservlet
+check_expression: ('DBSTEP' in text)

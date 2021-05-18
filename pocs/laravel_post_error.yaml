@@ -1,0 +1,6 @@
+name: laravel_post_error
+scan_rule:
+  method: POST
+  path:
+    - /
+check_expression: ('/vendor/laravel/framework/src/' in text) and status == 405

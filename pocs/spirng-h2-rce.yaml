@@ -1,0 +1,6 @@
+name: spirng-h2-rce
+scan_rule:
+  method: GET
+  path:
+    - /h2-console
+check_expression: ('Welcome to H2' in text)

@@ -1,0 +1,6 @@
+name: axis2
+scan_rule:
+  path:
+    - /solr/
+    - /Solr/
+check_expression: "'<title>Solr Admin</title>' in text"

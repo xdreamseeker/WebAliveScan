@@ -1,0 +1,6 @@
+name: javamelody XXE
+scan_rule:
+  method: GET
+  path:
+    - /monitoring
+check_expression: ('SNAPSHOT' in text)

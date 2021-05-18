@@ -1,0 +1,6 @@
+name: Cacti
+scan_rule:
+  method: GET
+  path:
+    - /cacti/
+check_expression: ('<title>Login to Cacti</title>' in text)

@@ -1,0 +1,6 @@
+name: MemAdmin
+scan_rule:
+  method: GET
+  path:
+    - /memadmin/index.php
+check_expression: ('<title>Login - MemAdmin' in text)

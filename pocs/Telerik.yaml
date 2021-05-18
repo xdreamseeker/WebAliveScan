@@ -1,0 +1,5 @@
+name: Telerik RCE
+scan_rule:
+  path:
+    - /Telerik.Web.UI.WebResource.axd?type=rau
+check_expression: ('RadAsyncUpload handler is registered succesfully' in text)

@@ -1,0 +1,5 @@
+name: cas
+scan_rule:
+  path:
+    - /cas
+check_expression: ('name="execution" value=' in text)

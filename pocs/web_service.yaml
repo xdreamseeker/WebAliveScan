@@ -1,0 +1,14 @@
+name: web_service
+scan_rule:
+  path:
+    - /webservice/PublicService.asmx
+    - /webservice/Service.asmx
+    - /service/Service.asmx
+    - /service/WebService.asmx
+    - /Service.asmx
+    - /WebService.asmx
+    - /Service
+    - /webservice
+    - /WebTool.asmx
+    - /webservices
+check_expression: "('.intro {margin-left: -15px; }' in text)"

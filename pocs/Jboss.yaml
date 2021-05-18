@@ -1,0 +1,8 @@
+name: Jboss
+scan_rule:
+  method: GET
+  path:
+    - /web-console/index.html
+    - /admin-console/index.html
+    - /jmx-console/HtmlAdaptor
+check_expression: ('Jboss' in text)

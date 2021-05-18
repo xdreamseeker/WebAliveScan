@@ -1,3 +1,5 @@
+from gevent import monkey
+monkey.patch_all()
 from lib.common.request import Request
 from lib.common.output import Output
 from lib.utils.wappalyzer import Wappalyzer
@@ -19,7 +21,7 @@ class Program(object):
             for info in request.alive_result_list:
                 dirbrute = Dirbrute(info.get('url'), output, brute_result_list)
                 dirbrute.run()
-            save_result(request.brute_path, ['url', 'status', 'size'], brute_result_list)
+            save_result(request.brute_path, ['url', 'status', 'size','component'], brute_result_list)
             output.resultOutput(f'Brute result save to: {request.brute_path}')
 
 

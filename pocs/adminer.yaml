@@ -1,0 +1,30 @@
+name: adminer
+scan_rule:
+  path:
+    - /adminer.php
+    - /editor-4.2.5.php
+    - /editor.php
+    - /a.php
+    - /e.php
+    - /adminer-4.2.5.php
+    - /editor-4.3.0.php
+    - /adminer-4.3.0.php
+    - /adminer-4.3.1.php
+    - /editor-4.3.1.php
+    - /adminer-4.4.0.php
+    - /editor-4.4.0.php
+    - /adminer-4.5.0.php
+    - /editor-4.5.0.php
+    - /adminer-4.6.0.php
+    - /editor-4.6.0.php
+    - /adminer-4.6.1.php
+    - /editor-4.6.1.php
+    - /adminer-4.6.2.php
+    - /editor-4.6.2.php
+    - /adminer-4.6.3.php
+    - /editor-4.6.3.php
+    - /adminer-4.7.0.php
+    - /editor-4.7.0.php
+    - /sql.php
+    - /mysql.php
+check_expression: ('www.adminer.org' in text)

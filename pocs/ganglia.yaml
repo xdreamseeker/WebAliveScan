@@ -1,0 +1,6 @@
+name: ganglia
+scan_rule:
+  method: GET
+  path:
+    - /ganglia/
+check_expression: ('<title>Ganglia' in text)

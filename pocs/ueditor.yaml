@@ -1,0 +1,47 @@
+###scan_rule配置###
+# method: 请求方法，支持：GET、POST、PUT
+# allow_redirects: 是否允许重定向
+# ssl_verify:  是否验证SSL
+# params:  GET参数
+# pocs:  POST参数
+# cookies: 请求cookie
+# timeout: 响应延迟
+# headers: 请求头
+# path: 路径
+# expression: 扫描过滤表达式，不符合条件不扫描
+## expression扫描前提条件
+## 变量：website
+## website = {
+##            'url': URL,
+##            'title': Title,
+##            'status': Status,
+##            'size': Size,
+##            'application': Application,
+##            'server': Server,
+##            'language': Language,
+##            'framework': Framework,
+##            'system': System,
+##            'redirect': Redirect
+## }
+# 注：置空则使用config.py中的默认配置
+
+# check_expression: 为了降低误报，配置过滤规则，判断条件：response, text, status, headers, size, content_type
+# response: Response对象
+# text: HTML源码
+# status: 状态码
+# headers: 响应头
+# size：内容长度
+# content_type: 内容类型
+name: ueditor
+scan_rule:
+  method: GET
+  path:
+    - /static/common/lib/ueditor/ueditor.config.js
+    - /statics/modules/ueditor/ueditor.config.js
+    - /static/js/ueditor/ueditor.config.js
+    - /ueditor/ueditor.config.js
+    - /scripts/ueditor/ueditor.config.js
+    - /static/third/ueditor/ueditor.config.js
+    - /plugin/ueditor/ueditor.config.js
+    - /Public/ueditor/ueditor.config.js
+check_expression: ('UEDITOR_HOME_URL' in text)

@@ -1,0 +1,48 @@
+name: backups_file
+scan_rule:
+  method: GET
+  headers:
+    Connection: Keep-Alive
+    Range: bytes=0-102400
+  path:
+    - /web.zip
+    - /web.war
+    - /{domain}.zip
+    - /{domain}.rar
+    - /{domain}.tar.gz
+    - /{domain}.tar
+    - /www.zip
+    - /www.war
+    - /bin.zip
+    - /bin.rar
+    - /ROOT.war
+    - /ROOT.zip
+    - /ROOT.rar
+    - /ROOT.tar
+    - /ROOT.tar.gz
+    - /www.rar
+    - /www.tar
+    - /web.rar
+    - /web.tar
+    - /www.tar.gz
+    - /web.tar.gz
+    - /tmp.rar
+    - /tmp.zip
+    - /tmp.tar.gz
+    - /tmp.tar
+    - /Default.rar
+    - /Default.zip
+    - /Default.tar.gz
+    - /Default.tar
+    - /Default.war
+    - /Webroot.rar
+    - /Webroot.zip
+    - /Webroot.tar.gz
+    - /Webroot.tar
+    - /Webroot.war
+    - /acenter.rar
+    - /acenter.zip
+    - /acenter.tar.gz
+    - /acenter.tar
+    - /acenter.war
+check_expression: (status in [200,206]) and (size > 10240) and ('application/' in content_type)

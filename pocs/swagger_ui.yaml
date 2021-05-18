@@ -1,0 +1,11 @@
+name: swagger_ui
+scan_rule:
+  path:
+    - /swagger-ui.html
+    - /;/swagger-ui.html
+    - /api/swagger-ui.html
+    - /v2/api-docs
+    - /api/v2/api-docs
+    - /web/swagger-ui.html
+    - /web/v2/api-docs
+check_expression: "('swagger-ui/css' in text) or ('{\"swagger\":\"2.0\",' in text)"

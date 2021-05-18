@@ -1,0 +1,13 @@
+name: kindeditor
+scan_rule:
+  method: GET
+  path:
+    - /kindeditor/kindeditor-all.js
+    - /statics/modules/kindeditor/kindeditor-all.js
+    - /static/js/kindeditor/kindeditor-all.js
+    - /static/common/lib/kindeditor/kindeditor-all.js
+    - /scripts/kindeditor/kindeditor-all.js
+    - /includes/kindeditor/kindeditor-all.js
+    - /plugin/kindeditor/kindeditor-all.js
+    - /Public/kindeditor/kindeditor-all.js
+check_expression: ('www.kindsoft.net' in text)

@@ -1,0 +1,6 @@
+name: zabbix
+scan_rule:
+  method: GET
+  path:
+    - /zabbix/
+check_expression: ('<title>Zabbix' in text)

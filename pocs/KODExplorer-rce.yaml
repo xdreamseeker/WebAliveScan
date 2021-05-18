@@ -1,0 +1,9 @@
+name: KODExplorer-rce
+scan_rule:
+  method: GET
+  path:
+    - /zb_users/plugin/KODExplorer/KODExplorer/static/js/main.js
+    - /plugin/KODExplorer/static/js/main.js
+    - /explorer/static/js/main.js
+    - /KODExplorer/static/js/main.js
+check_expression: ('dialog_tpl_css' in text)

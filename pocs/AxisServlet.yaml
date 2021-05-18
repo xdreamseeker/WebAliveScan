@@ -1,0 +1,6 @@
+name: AxisServlet
+scan_rule:
+  method: GET
+  path:
+    - /servlet/AxisServlet
+check_expression: ('Some Services' in text)

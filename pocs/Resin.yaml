@@ -1,0 +1,6 @@
+name: Resin Admin
+scan_rule:
+  method: GET
+  path:
+    - /resin-admin/
+check_expression: ('Resin Admin Login for' in text)

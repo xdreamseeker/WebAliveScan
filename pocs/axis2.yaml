@@ -1,0 +1,10 @@
+name: axis2
+scan_rule:
+  path:
+    - /axis2/
+    - /axis2/axis2-admin/
+    - /axis2/services/listServices
+    - /axis2-admin/
+    - /services/listServices
+    - /axis2/axis2-web/HappyAxis.jsp
+check_expression: ('axis-style.css' in text)

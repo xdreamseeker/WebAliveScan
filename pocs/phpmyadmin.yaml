@@ -1,0 +1,9 @@
+name: phpmyadmin
+scan_rule:
+  method: GET
+  path:
+    - /phpmyadmin/index.php
+    - /phpMyAdmin/index.php
+    - /_phpmyadmin/index.php
+    - /pma/index.php
+check_expression: ('<title>phpMyAdmin' in text)

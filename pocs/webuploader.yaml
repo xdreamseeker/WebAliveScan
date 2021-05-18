@@ -1,0 +1,16 @@
+name: webuploader
+scan_rule:
+  method: GET
+  path:
+    - /webuploader/0.1.5/webuploader.js
+    - /static/hadmin/lib/webuploader/0.1.5/webuploader.js
+    - /statics/huiadmin/lib/webuploader/0.1.5/webuploader.js
+    - /Public/lib/webuploader/0.1.5/webuploader.js
+    - /scripts/webuploader/0.1.5/webuploader.js
+    - /lib/webuploader/0.1.5/webuploader.js
+    - /Public/hui/lib/webuploader/0.1.5/webuploader.js
+    - /static/adminlib/webuploader/0.1.5/webuploader.js
+    - /plugin/adminlib/webuploader/0.1.5/webuploader.js
+    - /includes/adminlib/webuploader/0.1.5/webuploader.js
+    - /statics/modules/adminlib/webuploader/0.1.5/webuploader.js
+check_expression: ('webuploader-container' in text)

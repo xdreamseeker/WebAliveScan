@@ -1,0 +1,6 @@
+name: web_config
+scan_rule:
+  path:
+    - /web.config
+    - /web.config.bak
+check_expression: ('<configuration>' in text) and ('<system.webServer>' in text) and (status in [200, 206])

@@ -1,0 +1,7 @@
+name: jenkins
+scan_rule:
+  method: GET
+  path:
+    - /script
+    - /jenkins/script
+check_expression: ('Type in an arbitrary' in text)

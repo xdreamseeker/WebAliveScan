@@ -1,0 +1,6 @@
+name: KYCMS-rce
+scan_rule:
+  method: GET
+  path:
+    - /Common/UpLoadFile.aspx
+check_expression: ('multipart/form-data' in text)

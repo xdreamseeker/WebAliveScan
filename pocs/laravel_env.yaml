@@ -1,0 +1,5 @@
+name: laravel_env
+scan_rule:
+  path:
+    - /.env
+check_expression: re.search('(?m)^APP_(NAME|ENV|KEY|DEBUG|URL)=', text) and status == 200

@@ -1,0 +1,5 @@
+name: CVE-2020-1147
+scan_rule:
+  path:
+    - /admin/login.html
+check_expression: ('layui/css/layui.css' in text)

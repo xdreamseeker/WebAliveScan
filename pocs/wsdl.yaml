@@ -1,0 +1,9 @@
+name: wsdl
+scan_rule:
+  path:
+    - /services/Service?wsdl
+    - /services/WebService?wsdl
+    - /services/AdminService?wsdl
+    - /services?wsdl
+    - /WebService?wsdl
+check_expression: ('wsdl:definitions' in text)

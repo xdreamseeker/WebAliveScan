@@ -1,0 +1,8 @@
+name: WebLogic
+scan_rule:
+  method: GET
+  path:
+    - /console/login/LoginForm.jsp
+    - /uddiexplorer/SearchPublicRegistries.jsp
+    - /uddiexplorer/uddiexplorer/SearchPublicRegistries.jsp
+check_expression: ('WebLogic' in text)

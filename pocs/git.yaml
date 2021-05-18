@@ -1,0 +1,5 @@
+name: git
+scan_rule:
+  path:
+    - /.git/config
+check_expression: ('[core]' in text) and (status == 200)

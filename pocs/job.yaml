@@ -1,0 +1,6 @@
+name: jobrce
+scan_rule:
+  method: POST
+  path:
+    - /run
+check_expression: ('com.xxl.job' in text)

@@ -1,0 +1,6 @@
+name: iisput
+scan_rule:
+  method: OPTIONS
+  path:
+    - /
+check_expression: re.search('PUT', headers.get('Public')) and re.search('IIS', headers.get('Server'))

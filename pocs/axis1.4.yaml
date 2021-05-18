@@ -1,0 +1,9 @@
+name: axis1.4
+scan_rule:
+  path:
+    - /services/FreeMarkerService
+    - /services/AdminService
+    - /axis/services/FreeMarkerService
+    - /axis/services/AdminService
+    - /services/listServices
+check_expression: ('AXIS' in text)

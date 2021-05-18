@@ -1,0 +1,6 @@
+name: DTCMS-REMOVEFILE
+scan_rule:
+  method: GET
+  path:
+    - /tools/upload_ajax.ashx
+check_expression: ('"status"' in text) 

@@ -1,0 +1,13 @@
+name: FCKeditor
+scan_rule:
+  method: GET
+  path:
+    - /FCKeditor/fckconfig.js
+    - /plugin/FCKeditor/fckconfig.js
+    - /includes/fckeditor/fckeditor.js
+    - /static/common/lib/fckeditor/fckeditor.js
+    - /scripts/fckeditor/fckeditor.js
+    - /static/js/fckeditor/fckeditor.js
+    - /statics/modules/fckeditor/fckeditor.js
+    - /Public/fckeditor/fckeditor.js
+check_expression: ('www.fckeditor.net' in text)

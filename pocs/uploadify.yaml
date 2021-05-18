@@ -1,0 +1,7 @@
+name: uploadify
+scan_rule:
+  method: GET
+  path:
+    - /plugins/uploadify/uploadify.css
+    - /uploadify/uploadify.css
+check_expression: ('uploadifyQueueItem' in text)

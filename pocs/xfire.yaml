@@ -1,0 +1,7 @@
+name: xfire(XXE)
+scan_rule:
+  path:
+    - /webservice/services
+    - /webservice
+    - /services
+check_expression: ('xfire.codehaus.org' in text)
