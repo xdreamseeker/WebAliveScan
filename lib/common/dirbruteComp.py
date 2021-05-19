@@ -1,7 +1,7 @@
 import requests
 import urllib3
 import yaml
-
+import re
 import rules
 from concurrent.futures import ThreadPoolExecutor
 from lib.utils.FileUtils import *
@@ -59,7 +59,7 @@ class DirbruteComp:
         return url + path
 
     def init_rules(self):
-        self.all_rules = load_pocs("C:\\Users\\itmain\\PycharmProjects\\WebAliveScan\\pocs")
+        self.all_rules = load_pocs("D:\\PycharmProjects\\WebAliveScan\\pocs")
 
     def compare_rule(self, rule, response_status, response_html, response_content_type):
         rule_status = [200, 206, rule.get('status')]
@@ -73,42 +73,81 @@ class DirbruteComp:
             return
         return True
 
+    def response_content_decode(self, response):
+        try:
+            html = response.content.decode(encoding='utf-8')
+        except UnicodeDecodeError:
+            try:
+                html = response.content.decode(encoding='gbk')
+            except UnicodeDecodeError:
+                html = response.text
+        return html
+
+    def execute_expression(self, expression, **kwargs):
+        for key, value in kwargs.items():
+            locals()[key] = value
+        try:
+            if eval(expression):
+                return True
+            elif expression is None:
+                return True
+        except Exception as e:
+            return e
+
     def brute(self, name,rule):
         user_agent = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
         headers = {'User-Agent': user_agent, 'Connection': 'Keep-Alive', 'Range': 'bytes=0-102400'}
         for sub_url in rule['scan_rule']['path']:
-            print(sub_url)
             url = self.format_url(sub_url)
+            expression = rule.get('check_expression')
 
             try:
-                r = requests.get(url, headers=headers, verify=False, timeout=3)
+                response = requests.get(url, headers=headers, verify=False, timeout=3)
             except Exception as e:
                 return e
-            size = FileUtils.sizeHuman(len(r.text))
-            response_status = r.status_code
-            response_html = r.text
-            response_content_type = r.headers['Content-Type']
+            size = FileUtils.sizeHuman(len(response.text))
+
+            response_html = response.text
+
             # for white_rule in rules.white_rules:
             #     if self.compare_rule(white_rule, response_status, response_html, response_content_type):
             #         self.output.statusReport(url, response_status, size)
             # if not self.compare_rule(rule, response_status, response_html, response_content_type):
             #     return
-            url_info = {'url': url, 'status': response_status, 'size': size.strip(),'component':rule.get("component", "")}
-            self.brute_result_list.append(url_info)
-            self.output.statusReport(url_info)
+            text = self.response_content_decode(response)
+            status = response.status_code
+            size = len(response.content)
+            content_type = response.headers.get('Content-Type')
+            headers = response.headers
+
+
+            if expression and self.execute_expression(expression=expression, text=text, size=size,
+                                                      content_type=content_type, headers=headers,
+                                                      status=status, response=response) is True:
+                site_info = {'url': url, 'status': status, 'size': size, 'found': name}
+                self.output.statusReport(site_info)
+                self.brute_result_list.append(site_info)
+            else:
+                site_info = {'url': url, 'status': status, 'size': size, 'found': "[]"}
+                self.output.statusReport(site_info)
+
+            # url_info = {'url': url, 'status': response_status, 'size': size.strip(),'component':name}
+            # self.brute_result_list.append(url_info)
+            # self.output.statusReport(url_info)
             # return [url, rule]
 
     def run(self):
         self.init_rules()
 
-        for (name,rule) in self.all_rules.items():
-            self.brute(name,rule)
-        # with ThreadPoolExecutor(30) as pool:
-        #     for rule in self.all_rules:
-        #         pool.submit(self.brute, rule)
+        # for (name,rule) in self.all_rules.items():
+        #     self.brute(name,rule)
+        with ThreadPoolExecutor(30) as pool:
+            for (name,rule) in self.all_rules.items():
+                pool.submit(self.brute, name,rule)
 
 if __name__ == "__main__":
     brute_result_list = []
     output = Output()
     dirbrute = DirbruteComp("http://107.173.146.28", output, brute_result_list)
     dirbrute.run()
+    save_result("D:\\PycharmProjects\\WebAliveScan\\results\\1.csv", ['url', 'status', 'size', 'found'], brute_result_list)
