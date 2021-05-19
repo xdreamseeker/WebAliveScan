@@ -1,5 +1,0 @@
-url,status,size
-"http://182.252.131.22/actuator/info","200","87B"
-"http://182.252.131.22/actuator/health","200","15B"
-"http://182.252.131.22:9000/actuator/info","200","107B"
-"http://182.252.131.22:9000/actuator/health","200","15B"

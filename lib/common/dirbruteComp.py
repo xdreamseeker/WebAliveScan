@@ -1,3 +1,5 @@
+import traceback
+
 import requests
 import urllib3
 import yaml
@@ -104,6 +106,7 @@ class DirbruteComp:
             try:
                 response = requests.get(url, headers=headers, verify=False, timeout=3)
             except Exception as e:
+                traceback.print_exc()
                 return e
             size = FileUtils.sizeHuman(len(response.text))
 

@@ -1,4 +1,7 @@
 from gevent import monkey
+
+from lib.common.dirbruteComp import DirbruteComp
+
 monkey.patch_all()
 from lib.common.request import Request
 from lib.common.output import Output
@@ -19,9 +22,9 @@ class Program(object):
             brute_result_list = []
             output.newLine('')
             for info in request.alive_result_list:
-                dirbrute = Dirbrute(info.get('url'), output, brute_result_list)
+                dirbrute = DirbruteComp(info.get('url'), output, brute_result_list)
                 dirbrute.run()
-            save_result(request.brute_path, ['url', 'status', 'size','component'], brute_result_list)
+            save_result(request.brute_path, ['url', 'status', 'size','found'], brute_result_list)
             output.resultOutput(f'Brute result save to: {request.brute_path}')
 
 
