@@ -6,6 +6,8 @@ import yaml
 import re
 import rules
 from concurrent.futures import ThreadPoolExecutor
+
+from config import pocs_path
 from lib.utils.FileUtils import *
 from lib.utils.tools import *
 urllib3.disable_warnings()
@@ -61,7 +63,7 @@ class DirbruteComp:
         return url + path
 
     def init_rules(self):
-        self.all_rules = load_pocs("D:\\PycharmProjects\\WebAliveScan\\pocs")
+        self.all_rules = load_pocs(pocs_path)
 
     def compare_rule(self, rule, response_status, response_html, response_content_type):
         rule_status = [200, 206, rule.get('status')]

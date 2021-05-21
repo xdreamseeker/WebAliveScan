@@ -27,3 +27,4 @@ threads = 1024
 timeout = 3
 realpath = pathlib.Path(__file__).parent
 result_save_path = realpath.joinpath('results')
+pocs_path = realpath.joinpath('pocs')
