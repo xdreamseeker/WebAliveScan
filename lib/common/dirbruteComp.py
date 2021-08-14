@@ -59,7 +59,9 @@ class DirbruteComp:
         return url + path
 
     def init_rules(self):
-        self.all_rules = load_pocs("D:\\PycharmProjects\\WebAliveScan\\pocs")
+        pocpath = os.path.join(os.path.dirname(__file__),"../../pocs")
+        print(pocpath)
+        self.all_rules = load_pocs(pocpath)
 
     def compare_rule(self, rule, response_status, response_html, response_content_type):
         rule_status = [200, 206, rule.get('status')]
@@ -148,6 +150,6 @@ class DirbruteComp:
 if __name__ == "__main__":
     brute_result_list = []
     output = Output()
-    dirbrute = DirbruteComp("http://107.173.146.28", output, brute_result_list)
+    dirbrute = DirbruteComp("http://3.82.212.0:8080", output, brute_result_list)
     dirbrute.run()
-    save_result("D:\\PycharmProjects\\WebAliveScan\\results\\1.csv", ['url', 'status', 'size', 'found'], brute_result_list)
+    save_result("1.csv", ['url', 'status', 'size', 'found'], brute_result_list)
