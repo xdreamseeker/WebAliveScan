@@ -1,4 +1,4 @@
-from gevent import monkey, pool; monkey.patch_all()
+from gevent import monkey, pool
 from lib.utils.FileUtils import *
 import config
 import chardet

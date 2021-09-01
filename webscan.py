@@ -2,7 +2,7 @@ from gevent import monkey
 
 from lib.common.dirbruteComp import DirbruteComp
 
-monkey.patch_all()
+# monkey.patch_all()
 from lib.common.request import Request
 from lib.common.output import Output
 from lib.utils.wappalyzer import Wappalyzer
