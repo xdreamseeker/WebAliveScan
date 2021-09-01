@@ -6,7 +6,7 @@ monkey.patch_all()
 from lib.common.request import Request
 from lib.common.output import Output
 from lib.utils.wappalyzer import Wappalyzer
-from lib.common.dirbrute import Dirbrute
+from lib.common.dirbruteComp import DirbruteComp
 from lib.utils.tools import *
 import fire
 

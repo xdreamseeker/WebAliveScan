@@ -1,13 +1,9 @@
-import traceback
-
 import requests
 import urllib3
 import yaml
 import re
 import rules
 from concurrent.futures import ThreadPoolExecutor
-
-from config import pocs_path
 from lib.utils.FileUtils import *
 from lib.utils.tools import *
 urllib3.disable_warnings()
@@ -63,7 +59,9 @@ class DirbruteComp:
         return url + path
 
     def init_rules(self):
-        self.all_rules = load_pocs(pocs_path)
+        pocpath = os.path.join(os.path.dirname(__file__),"../../pocs")
+        print(pocpath)
+        self.all_rules = load_pocs(pocpath)
 
     def compare_rule(self, rule, response_status, response_html, response_content_type):
         rule_status = [200, 206, rule.get('status')]
@@ -108,7 +106,6 @@ class DirbruteComp:
             try:
                 response = requests.get(url, headers=headers, verify=False, timeout=3)
             except Exception as e:
-                traceback.print_exc()
                 return e
             size = FileUtils.sizeHuman(len(response.text))
 
@@ -153,6 +150,6 @@ class DirbruteComp:
 if __name__ == "__main__":
     brute_result_list = []
     output = Output()
-    dirbrute = DirbruteComp("http://107.173.146.28", output, brute_result_list)
+    dirbrute = DirbruteComp("http://3.82.212.0:8080", output, brute_result_list)
     dirbrute.run()
-    save_result("D:\\PycharmProjects\\WebAliveScan\\results\\1.csv", ['url', 'status', 'size', 'found'], brute_result_list)
+    save_result("1.csv", ['url', 'status', 'size', 'found'], brute_result_list)

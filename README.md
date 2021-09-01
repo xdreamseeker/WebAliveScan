@@ -55,3 +55,6 @@ python3 webscan.py --target target.txt --port 80 --brute True
 ##### v1.4增加简单的指纹识别、修改输出样式
 
 ![image-20200619150948129](./images/image-20200619150948129.png)
+
+
+dirbruteComp
